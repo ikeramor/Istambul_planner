@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estambul Mágico - Organizador de Viaje</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon">🕌</span>
+                <span class="brand-name">Estambul 2026</span>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-tab="itinerary">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                    <span>Itinerario</span>
+                </button>
+                <button class="nav-btn" data-tab="budget">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    <span>Presupuesto</span>
+                </button>
+                <button class="nav-btn" data-tab="packing">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 6h-2V3c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM9 3h6v3H9V3zm10 16H5V8h14v11z"/></svg>
+                    <span>Maleta</span>
+                </button>
+                <button class="nav-btn" data-tab="guide">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Guía de Puntos</span>
+                </button>
+                <button class="nav-btn" data-tab="dictionary">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 12H4v-2h8v2zm8-4H4V9h16v2zm0-4H4V5h16v2z"/></svg>
+                    <span>Diccionario</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>Buen viaje ✈️</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-bar" placeholder="Buscar actividades, palabras...">
+                </div>
+                <div class="user-profile">
+                    <div class="profile-info">
+                        <span class="user-name">Viajero</span>
+                        <span class="user-role">Estambul 6 Noches</span>
+                    </div>
+                    <div class="profile-avatar">🇹🇷</div>
+                </div>
+            </header>
+
+            <div class="scroll-container">
+                <!-- TAB: Dashboard -->
+                <section id="dashboard" class="tab-content active">
+                    <div class="hero-banner">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="hero-tag">6 Noches / 7 Días</span>
+                            <h1>Estambul, Turquía</h1>
+                            <p>Donde Europa y Asia se abrazan. Un viaje inolvidable por el Bósforo.</p>
+                            <div class="countdown-container">
+                                <span>El viaje comienza en:</span>
+                                <div id="countdown-timer" class="timer">
+                                    <div class="timer-box"><span id="days">--</span><small>Días</small></div>
+                                    <div class="timer-box"><span id="hours">--</span><small>Horas</small></div>
+                                    <div class="timer-box"><span id="minutes">--</span><small>Min</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Widgets Grid -->
+                    <div class="widgets-grid">
+                        <!-- Card 1: Resumen de Presupuesto -->
+                        <div class="card widget-card glass-card">
+                            <h3>Resumen Presupuesto</h3>
+                            <div class="budget-widget-content">
+                                <div class="budget-circle-container">
+                                    <svg viewBox="0 0 36 36" class="circular-chart gold">
+                                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" id="budget-progress-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage" id="budget-percent-text">0%</text>
+                                    </svg>
+                                </div>
+                                <div class="budget-stats">
+                                    <div>
+                                        <span class="stat-label">Gastado</span>
+                                        <span class="stat-val" id="spent-widget">0 €</span>
+                                    </div>
+                                    <div>
+                                        <span class="stat-label">Restante</span>
+                                        <span class="stat-val text-gold" id="remaining-widget">0 €</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Estado de la Maleta -->
+                        <div class="card widget-card glass-card">
+                            <h3>Estado de la Maleta</h3>
+                            <div class="packing-widget-content">
+                                <div class="packing-percentage-display">
+                                    <span id="packing-widget-number">0%</span>
+                                    <p>Objetos listos</p>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" id="packing-widget-bar" style="width: 0%"></div>
+                                </div>
+                                <div class="packing-quick-stats">
+                                    <span id="packing-items-count">0 de 0 items</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: El plan de hoy -->
+                        <div class="card widget-card glass-card">
+                            <h3>Actividad Próxima</h3>
+                            <div class="next-activity-content">
+                                <span class="activity-time-tag">Hoy - Tarde</span>
+                                <h4 id="next-activity-title">Visita a Santa Sofía</h4>
+                                <p id="next-activity-desc">Admira los mosaicos bizantinos y la majestuosa cúpula.</p>
+                                <button class="btn btn-primary btn-sm" onclick="app.switchTab('itinerary')">Ver Itinerario</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Clima e Info útil -->
+                        <div class="card widget-card glass-card">
+                            <h3>Conversor & Clima</h3>
+                            <div class="info-widget-content">
+                                <div class="weather-row">
+                                    <div class="weather-icon">☀️</div>
+                                    <div class="weather-details">
+                                        <span class="temp">24°C</span>
+                                        <span class="condition">Estambul, Soleado</span>
+                                    </div>
+                                </div>
+                                <hr class="card-divider">
+                                <div class="currency-converter">
+                                    <div class="currency-row">
+                                        <span>1 EUR (€)</span>
+                                        <span>≈</span>
+                                        <span class="text-gold" id="exchange-rate-display">35.40 TRY (₺)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: Itinerario -->
+                <section id="itinerary" class="tab-content">
+                    <div class="section-header">
+                        <h2>Itinerario Detallado</h2>
+                        <p>Haz clic en cada día para ver los planes y marcar las actividades realizadas.</p>
+                    </div>
+
+                    <!-- Days Nav Row -->
+                    <div class="days-nav-slider">
+                        <button class="day-tab-btn active" data-day="1">Día 1</button>
+                        <button class="day-tab-btn" data-day="2">Día 2</button>
+                        <button class="day-tab-btn" data-day="3">Día 3</button>
+                        <button class="day-tab-btn" data-day="4">Día 4</button>
+                        <button class="day-tab-btn" data-day="5">Día 5</button>
+                        <button class="day-tab-btn" data-day="6">Día 6</button>
+                        <button class="day-tab-btn" data-day="7">Día 7</button>
+                    </div>
+
+                    <!-- Itinerary Cards Container -->
+                    <div class="itinerary-content">
+                        <!-- Dynamic contents will be injected by JavaScript based on selected day -->
+                        <div id="itinerary-timeline" class="timeline"></div>
+                    </div>
+                </section>
+
+                <!-- TAB: Presupuesto -->
+                <section id="budget" class="tab-content">
+                    <div class="section-header">
+                        <h2>Planificador de Presupuesto</h2>
+                        <p>Controla tus gastos de viaje y visualiza en qué estás invirtiendo.</p>
+                    </div>
+
+                    <div class="budget-layout">
+                        <!-- Left Pane: Stats and Chart -->
+                        <div class="budget-panel-left">
+                            <div class="card glass-card budget-summary-large">
+                                <div class="limit-input-container">
+                                    <label for="budget-limit-input">Límite de Presupuesto (€):</label>
+                                    <div class="input-with-btn">
+                                        <input type="number" id="budget-limit-input" value="1000" min="1">
+                                        <button class="btn btn-secondary btn-sm" id="btn-save-limit">Guardar</button>
+                                    </div>
+                                </div>
+                                <div class="metrics-grid">
+                                    <div class="metric-box">
+                                        <span class="label">Límite Total</span>
+                                        <span class="value" id="total-limit-display">1000.00 €</span>
+                                    </div>
+                                    <div class="metric-box">
+                                        <span class="label">Total Gastado</span>
+                                        <span class="value text-gold" id="total-spent-display">0.00 €</span>
+                                    </div>
+                                    <div class="metric-box">
+                                        <span class="label">Restante</span>
+                                        <span class="value" id="total-remaining-display">1000.00 €</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar-container large">
+                                    <div class="progress-bar-fill" id="budget-bar-fill" style="width: 0%"></div>
+                                </div>
+                                <div class="budget-alert-message" id="budget-warning" style="display: none;">
+                                    ⚠️ ¡Has superado tu límite de presupuesto!
+                                </div>
+                            </div>
+
+                            <div class="card glass-card chart-card">
+                                <h3>Gastos por Categoría</h3>
+                                <div class="chart-content">
+                                    <div class="svg-chart-container">
+                                        <svg viewBox="0 0 200 200" width="100%" height="100%" id="category-donut-chart">
+                                            <!-- Dynamic slices injected by JS -->
+                                        </svg>
+                                    </div>
+                                    <div class="chart-legend" id="chart-legend-container">
+                                        <!-- Dynamic legend -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Pane: Expenses List -->
+                        <div class="budget-panel-right">
+                            <div class="card glass-card expenses-card">
+                                <div class="card-header-action">
+                                    <h3>Lista de Gastos</h3>
+                                    <button class="btn btn-primary btn-sm" id="btn-open-expense-modal">Añadir Gasto</button>
+                                </div>
+                                
+                                <div class="expenses-list-container">
+                                    <table class="expenses-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Categoría</th>
+                                                <th>Concepto</th>
+                                                <th>Costo (€)</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="expenses-table-body">
+                                            <!-- Dynamic items -->
+                                        </tbody>
+                                    </table>
+                                    <div class="empty-state" id="expenses-empty-state">
+                                        <span>💸</span>
+                                        <p>No hay gastos registrados aún. Añade tu primer gasto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: Maleta -->
+                <section id="packing" class="tab-content">
+                    <div class="section-header">
+                        <h2>Lista de Empaque</h2>
+                        <p>No olvides nada. Hemos preparado una lista esencial para Estambul que puedes personalizar.</p>
+                    </div>
+
+                    <div class="packing-layout">
+                        <!-- Left Panel: Categories -->
+                        <div class="packing-left">
+                            <div class="card glass-card packing-overall-progress">
+                                <h3>Progreso de Preparación</h3>
+                                <div class="radial-progress-large">
+                                    <svg viewBox="0 0 36 36" class="circular-chart-large gold">
+                                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" id="packing-progress-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage" id="packing-percent-text">0%</text>
+                                    </svg>
+                                </div>
+                                <p class="text-center text-muted" id="packing-summary-text">0 de 0 cosas listas</p>
+                            </div>
+
+                            <div class="card glass-card add-item-card">
+                                <h3>Añadir Artículo Personalizado</h3>
+                                <form id="add-packing-item-form">
+                                    <div class="form-group">
+                                        <label for="new-item-name">Nombre del objeto:</label>
+                                        <input type="text" id="new-item-name" placeholder="Ej. Adaptador de corriente" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="new-item-category">Categoría:</label>
+                                        <select id="new-item-category">
+                                            <option value="documentos">📄 Documentos / Esenciales</option>
+                                            <option value="ropa">👕 Ropa & Calzado</option>
+                                            <option value="electronica">🔌 Electrónica & Cables</option>
+                                            <option value="neceser">🧼 Neceser & Higiene</option>
+                                            <option value="otros">🎒 Otros / Extras</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Añadir a la lista</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Packing Items -->
+                        <div class="packing-right">
+                            <!-- Documents Category -->
+                            <div class="card glass-card category-list-card" data-category="documentos">
+                                <h4>📄 Documentos y Esenciales <span class="badge" id="badge-documentos">0/0</span></h4>
+                                <ul class="checklist" id="list-documentos"></ul>
+                            </div>
+                            
+                            <!-- Clothes Category -->
+                            <div class="card glass-card category-list-card" data-category="ropa">
+                                <h4>👕 Ropa y Calzado <span class="badge" id="badge-ropa">0/0</span></h4>
+                                <ul class="checklist" id="list-ropa"></ul>
+                            </div>
+
+                            <!-- Electronics Category -->
+                            <div class="card glass-card category-list-card" data-category="electronica">
+                                <h4>🔌 Electrónica <span class="badge" id="badge-electronica">0/0</span></h4>
+                                <ul class="checklist" id="list-electronica"></ul>
+                            </div>
+
+                            <!-- Toiletries Category -->
+                            <div class="card glass-card category-list-card" data-category="neceser">
+                                <h4>🧼 Neceser y Salud <span class="badge" id="badge-neceser">0/0</span></h4>
+                                <ul class="checklist" id="list-neceser"></ul>
+                            </div>
+
+                            <!-- Others Category -->
+                            <div class="card glass-card category-list-card" data-category="otros">
+                                <h4>🎒 Otros y Extras <span class="badge" id="badge-otros">0/0</span></h4>
+                                <ul class="checklist" id="list-otros"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: Guía de Puntos -->
+                <section id="guide" class="tab-content">
+                    <div class="section-header">
+                        <h2>Guía de Atracciones</h2>
+                        <p>Haz clic en las tarjetas para voltearlas y conocer horarios, precios e información clave de cada lugar emblemático.</p>
+                    </div>
+
+                    <div class="guide-grid">
+                        <!-- Card 1: Santa Sofia -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('assets/hagia_sophia.png')">
+                                    <div class="front-content">
+                                        <span class="guide-badge red">🏛️ Monumento</span>
+                                        <h3>Santa Sofía</h3>
+                                        <p>La joya de la corona bizantina y otomana.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Santa Sofía (Ayasofya)</h3>
+                                    <div class="card-back-info">
+                                        <p><strong>Horario:</strong> 09:00 - 19:30</p>
+                                        <p><strong>Entrada:</strong> 25 € (aprox. para extranjeros, entrada al piso superior).</p>
+                                        <p><strong>Código de vestimenta:</strong> Hombros y rodillas cubiertos. Mujeres deben cubrirse el cabello (puedes comprar un velo allí o llevar el tuyo).</p>
+                                        <p class="guide-tip">💡 <em>Consejo:</em> Ve muy temprano (8:30) o después de las 17:00 para evitar las enormes filas de mediodía.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Galata Tower -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('assets/galata_tower.png')">
+                                    <div class="front-content">
+                                        <span class="guide-badge blue">🗼 Vista Panorámica</span>
+                                        <h3>Torre de Gálata</h3>
+                                        <p>Una vista de 360 grados del Cuerno de Oro.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Torre de Gálata (Galata Kulesi)</h3>
+                                    <div class="card-back-info">
+                                        <p><strong>Horario:</strong> 08:30 - 22:00</p>
+                                        <p><strong>Entrada:</strong> 30 € aprox.</p>
+                                        <p><strong>Mejor momento:</strong> Al atardecer para ver el sol ponerse tras las mezquitas de Sultanahmet.</p>
+                                        <p class="guide-tip">💡 <em>Consejo:</em> Después de bajar, explora las tiendas de música de la calle Galip Dede y tómate un café en Karaköy.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Bosphorus Cruise -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('assets/bosphorus_cruise.png')">
+                                    <div class="front-content">
+                                        <span class="guide-badge green">🚢 Crucero</span>
+                                        <h3>Crucero por el Bósforo</h3>
+                                        <p>Navega entre dos continentes en un ferry público.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Crucero por el Bósforo</h3>
+                                    <div class="card-back-info">
+                                        <p><strong>Duración:</strong> 1.5 - 2 horas (ferry de línea corta).</p>
+                                        <p><strong>Precio:</strong> 5 € (150-200 TRY) usando los ferries oficiales de Şehir Hatları desde Eminönü.</p>
+                                        <p><strong>Qué verás:</strong> El Palacio Dolmabahçe, fortalezas otomanas, mansiones de madera (Yalı) y el puente colgante.</p>
+                                        <p class="guide-tip">💡 <em>Consejo:</em> Evita los barcos privados insistentes de los muelles; usa el ferry público de la compañía municipal.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Grand Bazaar -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('assets/grand_bazaar.png')">
+                                    <div class="front-content">
+                                        <span class="guide-badge gold">🛍️ Compras</span>
+                                        <h3>El Gran Bazar</h3>
+                                        <p>Uno de los mercados cubiertos más grandes del mundo.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Gran Bazar (Kapalıçarşı)</h3>
+                                    <div class="card-back-info">
+                                        <p><strong>Horario:</strong> 08:30 - 19:00 (Cerrado los domingos).</p>
+                                        <p><strong>Entrada:</strong> Gratuita.</p>
+                                        <p><strong>Qué comprar:</strong> Especias, delicias turcas, tés, lámparas de cristal, alfombras y joyas.</p>
+                                        <p class="guide-tip">💡 <em>Consejo:</em> ¡El regateo es obligatorio! Nunca aceptes el primer precio; empieza ofreciendo la mitad y sube gradualmente.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Mezquita Azul -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=600&auto=format&fit=crop')">
+                                    <div class="front-content">
+                                        <span class="guide-badge purple">🕌 Religión</span>
+                                        <h3>Mezquita Azul</h3>
+                                        <p>Famosa por sus azulejos de Iznik azules y 6 minaretes.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Mezquita del Sultán Ahmed</h3>
+                                    <div class="card-back-info">
+                                        <p><strong>Horario:</strong> Fuera de las horas de oración (5 veces al día).</p>
+                                        <p><strong>Entrada:</strong> Gratuita (se aceptan donaciones).</p>
+                                        <p><strong>Etiqueta:</strong> Quitarse los zapatos antes de entrar (te dan una bolsa). Hombros/rodillas cubiertas; mujeres con cabello cubierto.</p>
+                                        <p class="guide-tip">💡 <em>Consejo:</em> Consulta los horarios de oración del día y ve unos 45 minutos después del rezo matutino o del mediodía.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Cisterna Basílica -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?q=80&w=600&auto=format&fit=crop')">
+                                    <div class="front-content">
+                                        <span class="guide-badge orange">🏛️ Arqueología</span>
+                                        <h3>Cisterna Basílica</h3>
+                                        <p>El palacio sumergido con cabezas de Medusa.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Cisterna Basílica (Yerebatan Sarnıcı)</h3>
+                                    <div class="card-back-info">
+                                        <p><strong>Horario:</strong> 09:00 - 22:00</p>
+                                        <p><strong>Entrada:</strong> 20 € aprox. (600-800 TRY).</p>
+                                        <p><strong>Qué buscar:</strong> Las dos columnas sostenidas por cabezas talladas de Medusa al final de la pasarela.</p>
+                                        <p class="guide-tip">💡 <em>Consejo:</em> Con la reciente restauración, el show de luces y esculturas modernas flotando en el agua es espectacular.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: Diccionario -->
+                <section id="dictionary" class="tab-content">
+                    <div class="section-header">
+                        <h2>Diccionario de Supervivencia</h2>
+                        <p>Domina las palabras esenciales. Haz clic en el botón 🔊 para escuchar la pronunciación real en turco.</p>
+                    </div>
+
+                    <div class="dictionary-layout">
+                        <!-- Category Cards -->
+                        <div class="card glass-card dictionary-card">
+                            <h3>👋 Saludos y Cortesía</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Merhaba</span>
+                                        <span class="spanish">Hola</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Merhaba">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Teşekkür ederim</span>
+                                        <span class="spanish">Muchas gracias</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Teşekkür ederim">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Lütfen</span>
+                                        <span class="spanish">Por favor</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Lütfen">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Günaydın</span>
+                                        <span class="spanish">Buenos días</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Günaydın">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">İyi akşamlar</span>
+                                        <span class="spanish">Buenas tardes/noches</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="İyi akşamlar">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Güle güle</span>
+                                        <span class="spanish">Adiós (quien se queda)</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Güle güle">🔊</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card dictionary-card">
+                            <h3>🍽️ Restaurantes y Comida</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Hesap, lütfen</span>
+                                        <span class="spanish">La cuenta, por favor</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Hesap, lütfen">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Su</span>
+                                        <span class="spanish">Agua</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Su">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Çok lezzetli</span>
+                                        <span class="spanish">Muy delicioso</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Çok lezzetli">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Menü, lütfen</span>
+                                        <span class="spanish">La carta, por favor</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Menü, lütfen">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Ekmek</span>
+                                        <span class="spanish">Pan</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Ekmek">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Çay</span>
+                                        <span class="spanish">Té</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Çay">🔊</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card dictionary-card">
+                            <h3>🛍️ Compras y Regateo</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Bu ne kadar?</span>
+                                        <span class="spanish">¿Cuánto cuesta esto?</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Bu ne kadar?">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Çok pahalı</span>
+                                        <span class="spanish">Muy caro</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Çok pahalı">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">İndirim var mı?</span>
+                                        <span class="spanish">¿Hay descuento?</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="İndirim var mı?">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Sadece bakıyorum</span>
+                                        <span class="spanish">Solo estoy mirando</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Sadece bakıyorum">🔊</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card dictionary-card">
+                            <h3>🗺️ Direcciones y Ayuda</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Tuvalet nerede?</span>
+                                        <span class="spanish">¿Dónde está el baño?</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Tuvalet nerede?">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Metro nerede?</span>
+                                        <span class="spanish">¿Dónde está el metro?</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Metro nerede?">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Bana yardım edebilir misiniz?</span>
+                                        <span class="spanish">¿Me puede ayudar?</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Bana yardım edebilir misiniz?">🔊</button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <span class="turkish">Affedersiniz</span>
+                                        <span class="spanish">Disculpe / Perdón</span>
+                                    </div>
+                                    <button class="btn-play-voice" data-phrase="Affedersiniz">🔊</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL: Add Expense -->
+    <div class="modal-backdrop" id="expense-modal" style="display: none;">
+        <div class="modal-card glass-card">
+            <div class="modal-header">
+                <h3>Añadir Nuevo Gasto</h3>
+                <button class="btn-close-modal" id="btn-close-expense-modal">×</button>
+            </div>
+            <form id="add-expense-form">
+                <div class="form-group">
+                    <label for="expense-concept">Concepto / Descripción:</label>
+                    <input type="text" id="expense-concept" placeholder="Ej. Cena en Galata Bridge" required>
+                </div>
+                <div class="form-group">
+                    <label for="expense-amount">Monto en Euros (€):</label>
+                    <input type="number" id="expense-amount" placeholder="Ej. 45" step="0.01" min="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="expense-category">Categoría:</label>
+                    <select id="expense-category">
+                        <option value="vuelos">✈️ Vuelos</option>
+                        <option value="alojamiento">🏨 Alojamiento</option>
+                        <option value="comida">🍽️ Comida</option>
+                        <option value="actividades">🎟️ Actividades</option>
+                        <option value="compras">🛍️ Compras</option>
+                        <option value="transporte">🚇 Transporte</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-cancel-expense">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Registrar Gasto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
