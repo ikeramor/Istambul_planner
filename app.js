@@ -143,6 +143,7 @@ class IstanbulApp {
     init() {
         this.loadState();
         this.registerEventListeners();
+        this.registerFlipCards();
         this.startCountdown();
         this.renderAll();
     }
@@ -297,6 +298,14 @@ class IstanbulApp {
                 this.handleSearch(e.target.value.toLowerCase().trim());
             });
         }
+    }
+
+    registerFlipCards() {
+        document.querySelectorAll(".flip-card").forEach(card => {
+            card.addEventListener("click", () => {
+                card.classList.toggle("flipped");
+            });
+        });
     }
 
     switchTab(tabId) {

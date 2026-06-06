@@ -30,6 +30,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -1335,7 +1336,8 @@ body {
     border-radius: 16px;
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card:hover .flip-card-inner,
+.flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
@@ -1586,6 +1588,7 @@ body {
         height: auto;
         flex-direction: row;
         padding: 0.75rem 1rem;
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
         border-right: none;
         border-bottom: 1px solid var(--border-glass);
         justify-content: space-between;
@@ -1709,5 +1712,31 @@ body {
         flex-direction: column;
         gap: 1.5rem;
         align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-container {
+        padding: 0.75rem;
+    }
+    .card {
+        padding: 1rem;
+    }
+    .timeline-card {
+        padding: 1rem;
+    }
+    .hero-banner {
+        height: 180px;
+        padding: 1rem;
+    }
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    .days-nav-slider {
+        margin-bottom: 1rem;
+    }
+    .day-tab-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.75rem;
     }
 }
